@@ -16,19 +16,20 @@ document.addEventListener('DOMContentLoaded', () => {
         counter.innerText++
     })
 
-    
+
 ////// "like" button //////
     const like = document.getElementById('heart');
     const ul = document.querySelector(".likes");
-    const obj = {}
+    let numOfLikes = 1
     like.addEventListener('click', () => {
-        if (obj.hasOwnProperty(counter.innerText)) {
-
+        let li;
+        if (document.querySelector(`[data-num='${counter.innerText}']`)) {
+            li = document.querySelector(`[data-num='${counter.innerText}']`)
+            li.innerText = `${counter.innerText} have ${numOfLikes++} likes!`
         } else {
-            const li = document.createElement('li');
+            li = document.createElement('li');
             ul.appendChild(li);
-            obj[counter.innerText] = 1;
-            li.setAttribute("id", "like-number");
+            li.setAttribute("data-num", counter.innerText);
             li.innerText = `${counter.innerText} have 1 likes!`;
         }
     })
