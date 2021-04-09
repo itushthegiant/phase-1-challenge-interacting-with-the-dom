@@ -60,14 +60,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const list = document.getElementById('list');
     const form = document.getElementById("comment-form");
     const input = document.getElementById("comment-input");
-    const comment = input.value;
     form.addEventListener('submit', (e) => {
         e.preventDefault();
+        const comment = input.value;
         const uList = document.createElement('ul');
         const li = document.createElement('li');
         list.appendChild(uList);
         li.appendChild(document.createTextNode(comment));
         list.appendChild(li);
+        e.target.reset();
     })
 
 
