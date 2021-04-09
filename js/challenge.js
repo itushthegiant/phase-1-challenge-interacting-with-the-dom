@@ -39,19 +39,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const pause = document.getElementById('pause');
     pause.addEventListener('click', () => {
         if (pause.innerText === "pause") {
+            pause.innerText = "resume";
+            clearInterval(startTime);
             like.disabled = true;
             minus.disabled = true;
             plus.disabled = true;
-            clearInterval(startTime);
-            pause.innerText = "resume";
         } else {
+            startTime = setInterval(function() {
+                counter.innerText++
+            }, 1000) 
+            pause.innerText = "pause";
             like.disabled = false;
             minus.disabled = false;
             plus.disabled = false;
-            pause.innerText = "pause";
-            setInterval(function() {
-               counter.innerText++
-            }, 1000) 
         }
     })
 
@@ -70,9 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
         list.appendChild(li);
         e.target.reset();
     })
-
-
-
 
 
 
